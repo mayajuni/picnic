@@ -29,8 +29,8 @@ app.get("/", function(req, res){
 });
 
 /** 서버구동 */
-http.createServer(app).listen(80, function(){
-  console.log("Express server listening on port " + 80);
+http.createServer(app).listen(4000, function(){
+  console.log("Express server listening on port " + 4000);
 });
 
 module.exports = app;
