@@ -712,6 +712,12 @@ img::-moz-selection {
     margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+    header {
+        margin-top: 50px;
+    }
+}
+
 @media(min-width:768px) {
     .timeline:before {
         left: 50%;
