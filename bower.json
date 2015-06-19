@@ -1,0 +1,22 @@
+{
+  "name": "picnic",
+  "version": "0.0.0",
+  "authors": [
+    "동준"
+  ],
+  "description": "picnic",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.1",
+    "angular-strap": "~2.2.4",
+    "font-awesome": "~4.3.0",
+    "jquery.easing": "~1.3.1"
+  }
+}
