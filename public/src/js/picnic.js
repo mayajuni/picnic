@@ -43,3 +43,7 @@
     new WOW().init();
 
 })(jQuery); // End of use strict
+
+$('#modal').on('hidden.bs.modal', function () {
+    $(this).removeData('bs.modal');
+});

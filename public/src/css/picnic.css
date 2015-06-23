@@ -36,10 +36,16 @@ hr.light {
 }
 
 a {
-    color: #f05f40;
+    text-decoration:none !important;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
+}
+
+a:link,
+a:visited,
+a:active {
+    color : #444
 }
 
 a:hover,
@@ -502,8 +508,12 @@ body {
     max-height: 250px;
 }
 
+.portfolio-modal {
+    background-color: #D8D8D8;
+}
+
 .portfolio-modal .modal-content {
-    padding: 100px 0;
+    padding: 50px 0;
     min-height: 100%;
     border: 0;
     border-radius: 0;
@@ -781,6 +791,9 @@ img::-moz-selection {
 }
 
 @media(min-width:1200px) {
+    .col-lg-offset-1-5 {
+        margin-left: 12.5%;
+    }
     .timeline>li {
         min-height: 120px;
     }
@@ -809,3 +822,4 @@ img::-moz-selection {
     color: #fff;
     background-color: #0B6138;
 }
+

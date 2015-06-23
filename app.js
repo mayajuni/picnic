@@ -25,7 +25,7 @@ app.use(express.static(path.join('../upload')));
 
 /** 라우터 설정 */
 app.get("/", function(req, res){
-  res.sendFile(__dirname + "/public/dist/index.html");
+  res.sendFile(__dirname + "/public/dist/html/index.html");
 });
 
 /** 서버구동 */

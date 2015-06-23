@@ -44,16 +44,16 @@ gulp.task('images', function() {
         .pipe(gulp.dest('public/dist/img'));
 });
 
-// index.html 파일
+// html 파일
 gulp.task('index-min', function(){
-    return gulp.src('public/src/index.html')
+    return gulp.src(['public/src/index.html', 'public/src/html/**'])
         .pipe(minifyHTML())
-        .pipe(gulp.dest('public/dist'))
+        .pipe(gulp.dest('public/dist/html'))
 });
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(['public/dist/css', 'public/dist/js', 'public/dist/imgs'], cb)
+    del(['public/dist/css', 'public/dist/js', 'public/dist/img', 'public/dist/html'], cb)
 });
 
 // Default task
@@ -70,9 +70,9 @@ gulp.task('watch', function() {
     gulp.watch(['public/src/js/**/*.js'], ['scripts']);
 
     // Watch image files
-    gulp.watch('public/src/img/**/*', ['images']);
+    gulp.watch('public/src/img/**/**/*', ['images']);
 
     // Watch index files
-    gulp.watch('public/src/index.html', ['index-min']);
+    gulp.watch(['public/src/index.html', 'public/src/html/**/*'], ['index-min']);
 
 });
