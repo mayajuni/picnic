@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 /** 모듈 및 레디스 설정 등등 */
-/*app.use(favicon(dirName + '/public/dist/imgs/favicon.ico'));*/
+app.use(favicon(__dirName + '/public/lib/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
