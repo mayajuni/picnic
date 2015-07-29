@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     concatCss = require('gulp-concat-css'),
-    imagemin = require('gulp-imagemin'),
     del = require('del'),
     templateCache = require('gulp-angular-templatecache'),
     minifyHTML = require('gulp-minify-html');
@@ -40,7 +39,6 @@ gulp.task('scripts', function() {
 // 이미지 압축
 gulp.task('images', function() {
     return gulp.src('public/src/img/**/*')
-        .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
         .pipe(gulp.dest('public/dist/img'));
 });
 
