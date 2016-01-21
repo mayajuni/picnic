@@ -51,7 +51,9 @@ gulp.task('index-min', function(){
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(['public/dist/css', 'public/dist/js', 'public/dist/img', 'public/dist/html'], cb)
+    del(['public/dist']).then(function(){
+        cb(null);
+    })
 });
 
 // Default task
