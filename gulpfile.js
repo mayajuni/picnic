@@ -1,19 +1,18 @@
 /**
  * Created by 동준 on 2015-05-03.
  */
-var gulp = require('gulp'),
+const gulp = require('gulp'),
+    autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     concatCss = require('gulp-concat-css'),
-    del = require('del'),
-    templateCache = require('gulp-angular-templatecache'),
-    minifyHTML = require('gulp-minify-html');
-
-/* console.log 같은거 제거해주는거 */
-var stripDebug = require('gulp-strip-debug');
+    clean = require('gulp-clean'),
+    minifyHTML = require('gulp-minify-html'),
+    cache = require('gulp-cache'),
+    imagemin = require('gulp-imagemin'),
+    pngquant = require('imagemin-pngquant');
 
 // Styles
 gulp.task('styles', function() {
@@ -21,6 +20,7 @@ gulp.task('styles', function() {
         'public/src/css/*.css'
     ])
         .pipe(concatCss('app.css'))
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
         .pipe(gulp.dest('public/dist/css'));
@@ -39,21 +39,21 @@ gulp.task('scripts', function() {
 // 이미지 압축
 gulp.task('images', function() {
     return gulp.src('public/src/img/**/*')
+        .pipe(cache(imagemin({progressive: true, svgoPlugins: [{removeViewBox: false},{cleanupIDs: false}],use: [pngquant()]})))
         .pipe(gulp.dest('public/dist/img'));
 });
 
 // html 파일
 gulp.task('index-min', function(){
     return gulp.src(['public/src/index.html', 'public/src/html/**'])
-        .pipe(minifyHTML())
+        .pipe(minifyHTML({conditionals: true}))
         .pipe(gulp.dest('public/dist/html'))
 });
 
 // Clean
-gulp.task('clean', function(cb) {
-    del(['public/dist']).then(function(){
-        cb(null);
-    })
+gulp.task('clean', function() {
+    return gulp.src(['public/dist', 'public/imgs'], {read: false})
+        .pipe(clean());
 });
 
 // Default task
@@ -74,5 +74,4 @@ gulp.task('watch', function() {
 
     // Watch index files
     gulp.watch(['public/src/index.html', 'public/src/html/**/*'], ['index-min']);
-
 });

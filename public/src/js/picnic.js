@@ -1,5 +1,5 @@
 /**
- * Created by µ¿ÁØ on 2015-06-19.
+ * Created by ë™ì¤€ on 2015-06-19.
  */
 (function($) {
     "use strict"; // Start of use strict
